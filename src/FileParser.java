@@ -1,7 +1,7 @@
-import model.Show;
+import model.NetflixDataModel;
 
 import java.util.List;
 
 public interface FileParser {
-     List<Show> processInputFile(String inputFilePath);
+     List<NetflixDataModel> processInputFile(String inputFilePath);
 }

@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Show implements Serializable{
+public class NetflixDataModel implements Serializable{
 
     private static final long serialVersionUID = 6698795523537149496L;
 
@@ -103,7 +103,7 @@ public class Show implements Serializable{
 
     @Override
     public String toString() {
-        return "Show{" +
+        return "NetflixDataModel{" +
                 "showId='" + showId + '\'' +
                 ", type='" + type + '\'' +
                 ", title='" + title + '\'' +

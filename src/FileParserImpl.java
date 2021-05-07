@@ -1,5 +1,5 @@
 
-import model.Show;
+import model.NetflixDataModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import static common.Constants.PATTERN;
 public class FileParserImpl implements FileParser {
 
     @Override
-    public List<Show> processInputFile(String inputFilePath) {
-        List<Show> inputList = new ArrayList<>();
+    public List<NetflixDataModel> processInputFile(String inputFilePath) {
+        List<NetflixDataModel> inputList = new ArrayList<>();
         try {
             File inputF = new File(inputFilePath);
             InputStream inputFS = new FileInputStream(inputF);
@@ -28,11 +28,11 @@ public class FileParserImpl implements FileParser {
         return inputList;
     }
 
-    private Function<String, Show> mapToItem = (line) -> {
+    private Function<String, NetflixDataModel> mapToItem = (line) -> {
         String delimiter = PATTERN;
 
         String[] p = line.split(delimiter);
-        Show item = new Show();
+        NetflixDataModel item = new NetflixDataModel();
         if (p[0] != null) {
             item.setShowId(p[0]);
         }
