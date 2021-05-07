@@ -5,7 +5,7 @@ import model.Show;
 import java.util.Date;
 import java.util.List;
 
-public interface ShowData {
+public interface NetflixFilterService {
 
     List<Show> getDataByType(List<Show> inputList, String type,Date fromDate, Date toDate, long n);
 

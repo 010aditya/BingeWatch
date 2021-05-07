@@ -1,17 +1,16 @@
 
 import model.Show;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FileProcessorImpl implements FileProcessor {
+import static common.Constants.PATTERN;
+
+
+public class FileParserImpl implements FileParser {
 
     @Override
     public List<Show> processInputFile(String inputFilePath) {
@@ -29,7 +28,7 @@ public class FileProcessorImpl implements FileProcessor {
     }
 
     private Function<String, Show> mapToItem = (line) -> {
-        String delimiter = ",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)";
+        String delimiter = PATTERN;
 
         String[] p = line.split(delimiter);
         Show item = new Show();

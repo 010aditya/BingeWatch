@@ -2,6 +2,6 @@ import model.Show;
 
 import java.util.List;
 
-public interface FileProcessor {
+public interface FileParser {
      List<Show> processInputFile(String inputFilePath);
 }
