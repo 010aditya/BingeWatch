@@ -1,4 +1,5 @@
 
+import exceptions.InvalidDateFormatException;
 import model.Show;
 import service.NetflixFilterService;
 import service.NetflixFilterServiceImpl;
@@ -20,8 +21,8 @@ public class MainClass {
         String type = scanInput.getType();
         String listedIn = scanInput.getListedIn();
         String country = scanInput.getCountry();
-        Date inputDate = scanInput.getInputDate();
-        Date inputToDate = scanInput.getInputToDate();
+        Date inputDate = scanInput.getFromDate();
+        Date inputToDate = scanInput.getToDate();
         int n = scanInput.getN();
 
         getNetflixData(netflixFilterService, inputList, type, listedIn, country, inputDate, inputToDate, n);
@@ -55,8 +56,8 @@ public class MainClass {
         private String type;
         private String listedIn;
         private String country;
-        private Date inputDate;
-        private Date inputToDate;
+        private Date fromDate;
+        private Date toDate;
         private int n;
 
         public String getType() {
@@ -71,12 +72,12 @@ public class MainClass {
             return country;
         }
 
-        public Date getInputDate() {
-            return inputDate;
+        public Date getFromDate() {
+            return fromDate;
         }
 
-        public Date getInputToDate() {
-            return inputToDate;
+        public Date getToDate() {
+            return toDate;
         }
 
         public int getN() {
@@ -93,13 +94,20 @@ public class MainClass {
             country = sc.nextLine();
             System.out.println("Enter From Date");
             String date = sc.nextLine();
-            inputDate = DateUtil.parseDate(date);
+            try {
+                fromDate = DateUtil.parseDate(date);
+            } catch (InvalidDateFormatException e) {
+                e.printStackTrace();
+            }
             System.out.println("Enter From Date");
             String dateTo = sc.nextLine();
-            inputToDate = DateUtil.parseDate(dateTo);
+            try {
+                toDate = DateUtil.parseDate(dateTo);
+            } catch (InvalidDateFormatException e) {
+                e.printStackTrace();
+            }
             System.out.println("Enter Limit");
             n = sc.nextInt();
-            System.out.println(inputDate);
             return this;
         }
     }

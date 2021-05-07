@@ -21,6 +21,7 @@ public class FileParserImpl implements FileParser {
             BufferedReader br = new BufferedReader(new InputStreamReader(inputFS));
             inputList = br.lines().skip(1).map(mapToItem).collect(Collectors.toList());
             br.close();
+        } catch (FileNotFoundException f) {
         } catch (Exception e) {
         }
 
